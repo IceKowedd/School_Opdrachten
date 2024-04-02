@@ -29,6 +29,7 @@ public class Opdracht_3 {
     return Character.toLowerCase(scanner.next().charAt(0));
   }
 
+  // Switch case for selection from getUserInputFC.
   private static boolean fcSwitch(char userC, HashMap<String, Integer> list, Scanner scanner) {
     switch (userC) {
       case '1': addNewFriend(list, scanner); break;
@@ -40,6 +41,7 @@ public class Opdracht_3 {
     return true;
   }
 
+  // add new friend to HashMap "fcList"
   private static void addNewFriend(HashMap<String, Integer> list, Scanner scanner) {
     System.out.print("\nType the name of the person you want to add: ");
     String newName = scanner.next();
@@ -48,6 +50,7 @@ public class Opdracht_3 {
     list.put(newName, newAge);
   }
 
+  // delete friend from HashMap "fcList"
     private static void deleteFriend(HashMap<String, Integer> list, Scanner scanner) {
       System.out.print("\nEnter the name of the friend you want to delete: ");
       String name = scanner.next();
@@ -59,6 +62,7 @@ public class Opdracht_3 {
       }
     }
 
+  // Print friend list from HashMap "fcList"
     private static void printFriends(HashMap<String, Integer> list) {
       if (list.isEmpty()) {
         System.out.println("\nYour friends list is empty.");
