@@ -139,7 +139,7 @@ public class Counsellor { private String name;
     logger.info("\nEnter the name of the counsellor you want to delete: ");
     String name = scanner.next();
     boolean found = false;
-    for (int i = 0; i < getCounsellors().size(); i++) { // LOOP TROUGH COUNSELLORS ARAYLIST.
+    for (int i = 0; i < getCounsellors().size(); i++) { // LOOP TROUGH COUNSELLORS ARRAYLIST.
       if (getCounsellors().get(i).getName().equalsIgnoreCase(name)) { getCounsellors().remove(i);
         String message = String.format("""
             %s has been deleted from your counsellor list.
