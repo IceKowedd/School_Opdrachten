@@ -3,7 +3,7 @@ import java.util.ArrayList; import java.util.InputMismatchException;
 import java.util.List; import java.util.Scanner; import frl.icekowedd.opdrachten.opdracht_4.validator.mail;
 import java.util.logging.Logger;
 
-// frl.icekowedd.opdrachten.opdracht_4.Counsellor class - What defines A counsellor?
+// Counsellor class - What defines A counsellor?
 public class Counsellor { private String name;
   private String email;
   private String residence;
@@ -12,7 +12,7 @@ public class Counsellor { private String name;
   private int age;
   private static final ArrayList<Counsellor> counsellors = new ArrayList<>();
 
-  // frl.icekowedd.opdrachten.opdracht_4.Counsellor Constructor
+  // Counsellor Constructor
   public Counsellor(String name, String email, String residence, int age, String phoneNumber, String workerNumber) {
     this.setName(name); this.setAge(age); this.setPhoneNumber(phoneNumber); this.setEmail(email);
     this.setResidence(residence); this.setWorkerNumber(workerNumber);}
