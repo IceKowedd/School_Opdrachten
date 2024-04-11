@@ -77,7 +77,7 @@ public class Opdracht_4 {
         case '4': running = false; break; default: break; } } }
 
 
-  // user input frl.icekowedd.opdrachten.opdracht_4.Counsellor Menu - Switch Case user selection.
+  // user input Counsellor Menu - Switch Case user selection.
   private static boolean getUserInputCounsellor(Scanner scanner) {
     Logger logger = Logger.getLogger(Opdracht_4.class.getName());
     boolean running = true; while (running) {
@@ -96,7 +96,7 @@ public class Opdracht_4 {
       case '4': running = false; break; default: break; } } return true; }
 
 
-  // user input frl.icekowedd.opdrachten.opdracht_4.Student Menu - Switch Case user selection.
+  // user input Student Menu - Switch Case user selection.
   private static boolean getUserInputStudent(Scanner scanner) {
     Logger logger = Logger.getLogger(Opdracht_4.class.getName());
     boolean running = true; while (running) {

@@ -1,7 +1,9 @@
 package frl.icekowedd.opdrachten.opdracht_4;// Imports
+
 import java.util.ArrayList; import java.util.InputMismatchException;
 import java.util.List; import java.util.Scanner;
 import frl.icekowedd.opdrachten.opdracht_4.validator.mail;
+import java.util.logging.Logger;
 
 // Student class - What defines A student?
 public class Student { private String name;
@@ -45,6 +47,7 @@ public class Student { private String name;
 
   // this method will create a student object and place it in "studentList".
   public static void addNewStudent(Scanner scanner) {
+    Logger logger = Logger.getLogger(Opdracht_4.class.getName());
     String name = getResidence("\nType the name of the person you want to add: ", scanner,
         "Invalid name format. Please try again.");
     int age = getAge(scanner);
@@ -56,63 +59,71 @@ public class Student { private String name;
     int studentNumber = getStudentNumber(scanner);
     // Here the constructor is called and the object will be created and added to ArrayList "studentList"
     Student newStudent = new Student(name, age, phoneNumber, email, residence, studentNumber);
-    getStudentList().add(newStudent); System.out.println("\n" + name + " has been added to your student list.\n"); }
+    String message = String.format("""
+    %s has been added to your student list.
+    """, name);
+    getStudentList().add(newStudent); logger.info(message); }
 
   private static int getStudentNumber(Scanner scanner) {
+    Logger logger = Logger.getLogger(Opdracht_4.class.getName());
     // Get studentNumber of the Student.
     int studentNumber;
     do {
-    System.out.print("\nType the student number of the person you want to add: ");
+    logger.info("\nType the student number of the person you want to add: ");
     studentNumber = scanner.nextInt(); // GET STUDENT NUMBER
-      if (isValidStud(studentNumber)) { System.out.println("Invalid student number format. Please try again.");
+      if (isValidStud(studentNumber)) { logger.info("Invalid student number format. Please try again.");
       } } while (isValidStud(studentNumber)); // VALIDATOR
     return studentNumber;
   }
 
   private static String getResidence(String s, Scanner scanner, String x) {
+    Logger logger = Logger.getLogger(Opdracht_4.class.getName());
     String residence;
     do {
-    System.out.print(s);
+    logger.info(s);
     residence = scanner.next(); // GET RESIDENCE
     if (isValidName(residence)) {
-      System.out.println(x);
+      logger.info(x);
     }
     } while (isValidName(residence)); // VALIDATOR
     return residence;
   }
 
   private static String getEmail(Scanner scanner) {
+    Logger logger = Logger.getLogger(Opdracht_4.class.getName());
     // Get the email of the Student.
     String email;
     do {
-    System.out.print("\nType the E-mail address of the person you want to add: ");
+    logger.info("\nType the E-mail address of the person you want to add: ");
       email = scanner.next(); // GET EMAIL.
-      if (mail.isValidEmail(email)) { System.out.println("Invalid email address format. Please try again.");}}
+      if (mail.isValidEmail(email)) { logger.info("Invalid email address format. Please try again.");}}
     while (mail.isValidEmail(email)); // VALIDATOR
     return email;
   }
 
   private static String getPhoneNumber(Scanner scanner) {
+    Logger logger = Logger.getLogger(Opdracht_4.class.getName());
     // Get the phone number of the Student.
     String phoneNumber;
     do {
-    System.out.print("\nEnter phone number (Must contain 10 digits): ");
+    logger.info("\nEnter phone number (Must contain 10 digits): ");
     phoneNumber = scanner.next(); // GET PHONE NUMBER
       if (isValidPhoneNumber(phoneNumber)) {
-        System.out.println("Invalid phone number format. Please try again.");}}
+        logger.info("Invalid phone number format. Please try again.");}}
     while (isValidPhoneNumber(phoneNumber)); // VALIDATOR
     return phoneNumber;
   }
 
   private static int getAge(Scanner scanner) {
+    Logger logger = Logger.getLogger(Opdracht_4.class.getName());
     // Get the age of the Student.
     int age = 0;
     boolean isValidInput = false;
     while (!isValidInput) {
-      System.out.print("\nType the age of the person you want to add: ");
+      logger.info("\nType the age of the person you want to add: ");
       try { age = scanner.nextInt(); isValidInput = true; } // GET AGE
       catch (InputMismatchException e) // CATCH EXCEPTION
-      {System.out.println("Invalid input. Please enter a valid integer.");
+      {logger.info("Invalid input. Please enter a valid integer.");
         scanner.next(); } }// Clear the invalid input from the scanner
     return age;
   }
@@ -120,21 +131,29 @@ public class Student { private String name;
   // delete Student from ArrayList "studentList".
   @SuppressWarnings("SuspiciousListRemoveInLoop")
   public static void deleteStudent(Scanner scanner) {
+    Logger logger = Logger.getLogger(Opdracht_4.class.getName());
     printStudent();
-    System.out.print("\nEnter the name of the student you want to delete: ");
+    logger.info("\nEnter the name of the student you want to delete: ");
     String name = scanner.next();
     boolean found = false;
     for (int i = 0; i < getStudentList().size(); i++) { // LOOP TROUGH STUDENT LIST
       if (getStudentList().get(i).getName().equalsIgnoreCase(name)) { getStudentList().remove(i);
-        System.out.println("\n" + name + " has been deleted from your student list.\n");
+        String message = String.format("""
+            %s has been deleted from your student list
+            """, name);
+        logger.info(message);
         found = true; } }
-    if (!found) { System.out.println("\nStudent not found in the list."); } }
+    if (!found) { logger.info("\nStudent not found in the list."); } }
 
   // Print Students from ArrayList "studentList"
   public static void printStudent() {
-    if (getStudentList().isEmpty()) { System.out.println("\nYour Student list is empty.");
-    } else { System.out.println("\nYour Student list:\n"); for (Student student : getStudentList()) // LOOP TROUGH STUDENT LIST.
-    { System.out.println(student); } System.out.println(); } }
+    Logger logger = Logger.getLogger(Opdracht_4.class.getName());
+    if (getStudentList().isEmpty()) { logger.info("\nYour Student list is empty.");
+    } else { logger.info("\nYour Student list:\n"); for (Student student : getStudentList()) // LOOP TROUGH STUDENT LIST.
+    {
+      logger.info(String.valueOf(student));
+    }
+      logger.info("\n"); } }
 
   public void setName(String name) {
     this.name = name;
