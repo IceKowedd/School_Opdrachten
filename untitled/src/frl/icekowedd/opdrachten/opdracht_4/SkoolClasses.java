@@ -122,7 +122,7 @@ public class SkoolClasses {
         availableCounsellors.add(counsellor); } }
     for (int i = 0; i < availableCounsellors.size(); i++) {
       String message = String.format(mes, i + 1, availableCounsellors.get(i).getName());
-      logger.info(message); };int counsellorIndex = 0;
+      logger.info(message); }int counsellorIndex = 0;
     boolean isValidInput = false;
     counsellorIndex = getStudentIndex(isValidInput, messageCounselNum, counsellorIndex, scanner);
     if (counsellorIndex > 0 && counsellorIndex <= availableCounsellors.size()) {
