@@ -1,4 +1,6 @@
-// imports
+package frl.icekowedd.opdrachten.opdracht_3;// imports
+import java.util.logging.Logger;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.HashMap;
 
@@ -7,6 +9,7 @@ public class Opdracht_3 {
 
   // calling main method
   public static void main(String[] args){
+    Logger logger = Logger.getLogger(Opdracht_3.class.getName());
     Scanner scanner = new Scanner(System.in);
     HashMap<String, Integer> fcList = new HashMap<>();
     boolean running = true;
@@ -14,12 +17,13 @@ public class Opdracht_3 {
       char userChoiceFC = getUserInputFC(scanner);
       running = fcSwitch(userChoiceFC, fcList, scanner);
     }
-    System.out.println("\nThankyou for using FC! ^^,");
+    logger.info("\nThankyou for using FC! ^^,");
   }
 
   // get user input, what does the user want to do?
   private static char getUserInputFC(Scanner scanner) {
-    System.out.print("""
+    Logger logger = Logger.getLogger(Opdracht_3.class.getName());
+    logger.info("""
         Welcome to FC, what would you like to do?
          (1) add new friends!
          (2) delete a friend...
@@ -43,37 +47,45 @@ public class Opdracht_3 {
 
   // add new friend to HashMap "fcList"
   private static void addNewFriend(HashMap<String, Integer> list, Scanner scanner) {
-    System.out.print("\nType the name of the person you want to add: ");
+    Logger logger = Logger.getLogger(Opdracht_3.class.getName());
+    logger.info("\nType the name of the person you want to add: ");
     String newName = scanner.next();
-    System.out.print("\nType the name of the person you want to add: ");
+    logger.info("\nType the name of the person you want to add: ");
     int newAge = scanner.nextInt();
     list.put(newName, newAge);
   }
 
   // delete friend from HashMap "fcList"
     private static void deleteFriend(HashMap<String, Integer> list, Scanner scanner) {
-      System.out.print("\nEnter the name of the friend you want to delete: ");
+      Logger logger = Logger.getLogger(Opdracht_3.class.getName());
+      logger.info("\nEnter the name of the friend you want to delete: ");
       String name = scanner.next();
       if (list.containsKey(name)) {
         list.remove(name);
-        System.out.println("\n" +name + " has been deleted from your friends list.\n");
+        String message = String.format("""
+        %s has been deleted from your friends list.
+        """, name);
+        logger.info(message);
       } else {
-        System.out.println("\nFriend not found in the list.");
+        logger.info("\nFriend not found in the list.");
       }
     }
 
   // Print friend list from HashMap "fcList"
     private static void printFriends(HashMap<String, Integer> list) {
+      Logger logger = Logger.getLogger(Opdracht_3.class.getName());
       if (list.isEmpty()) {
-        System.out.println("\nYour friends list is empty.");
+        logger.info("\nYour friends list is empty.");
       } else {
-        System.out.println("\nYour friends list:\n");
-        for (String name : list.keySet()) {
-          int age = list.get(name);
-          System.out.println(name + " (Age: " + age + ")");
+        logger.info("\nYour friends list:\n");
+        for (Map.Entry<String, Integer> object : list.entrySet()) {
+          String name = object.getKey();
+          int age = object.getValue();
+          String message = String.format("%s (Age: %d)", name, age);
+          logger.info(message);
 
         }
-        System.out.println();
+        logger.info("");
       }
 
   }

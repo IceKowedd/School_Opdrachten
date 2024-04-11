@@ -1,14 +1,17 @@
-
+package frl.icekowedd.opdrachten.opdracht_4;
 // Imports
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class SkoolClasses {
   private final String name;
+  public static final String messageAvailableClasses = "Available classes:";
+  public static final String messageCounselNum = "Counsellor number: ";
   private final ArrayList<Student> classStudents;
   private final ArrayList<Counsellor> classCounsellor;
-  public static ArrayList<SkoolClasses> allClasses = new ArrayList<>();
+  static final List<SkoolClasses> allClasses = new ArrayList<>();
   private ArrayList<Counsellor> getClassCounsellor() {return classCounsellor;}
 
   private ArrayList<Student> getClassStudents() { return classStudents;}
@@ -16,7 +19,7 @@ public class SkoolClasses {
   public SkoolClasses(String name) { this.name = name; this.classStudents = new ArrayList<>(); this.classCounsellor = new ArrayList<>(); }
 
   public static void addToClass(Scanner scanner) {
-    System.out.println("Available classes:"); // Print all available classes
+    System.out.println(messageAvailableClasses); // Print all available classes
     for (SkoolClasses skoolClass : allClasses) { System.out.println("- " + skoolClass.getName()); }
     // Prompt the user to enter the name of the class
     System.out.print("Enter the name of the class to add students and counsellors: ");
@@ -41,7 +44,8 @@ public class SkoolClasses {
 
   public static void addNewClass(Scanner scanner) {
     System.out.print("Enter the name of the class: "); // Get the name of the class
-    String className = scanner.next(); SkoolClasses newClass = new SkoolClasses(className);
+    String className = scanner.next();
+    SkoolClasses newClass = new SkoolClasses(className);
     allClasses.add(newClass); System.out.println("New class " + className + " has been added.");
     addStudent2(scanner, newClass);// Choose students for the class
     addCounsellor2(scanner, newClass);}// Choose counsellor for the class
@@ -49,18 +53,10 @@ public class SkoolClasses {
   public static void addStudent2(Scanner scanner, SkoolClasses selectedClass) {
     boolean addingStudents = true; while (addingStudents) {
       // Display students who are not already in the class
-      System.out.println("Select students to add to the class (Enter student number or 0 to finish):");
-      ArrayList<Student> availableStudents = new ArrayList<>();
-      for (Student student : Student.studentList) {
-        if (!selectedClass.getClassStudents().contains(student)) { availableStudents.add(student); } }
-      for (int i = 0; i < availableStudents.size(); i++) {
-        System.out.println((i + 1) + ". " + availableStudents.get(i).getName()); }
-      int studentIndex = 0; boolean isValidInput = false; while (!isValidInput) {
-        System.out.print("Student number: ");
-        try { studentIndex = scanner.nextInt(); isValidInput = true; } // Get student number
-        catch (InputMismatchException e) // CATCH EXCEPTION
-        {System.out.println("Invalid input. Please enter a valid integer.");
-          scanner.next(); } }// Clear the invalid input from the scanner
+      ArrayList<Student> availableStudents = studentsToAvaiArray(selectedClass);
+      int studentIndex = 0;
+      boolean isValidInput = false;
+      studentIndex = getStudentIndex(isValidInput, "Student number: ", studentIndex, scanner);
       scanner.nextLine(); if (studentIndex == 0) { addingStudents = false;
       } else if (studentIndex > 0 && studentIndex <= availableStudents.size()) {
         Student selectedStudent = availableStudents.get(studentIndex - 1);
@@ -68,21 +64,46 @@ public class SkoolClasses {
         System.out.println(selectedStudent.getName() + " added to the class.");
       } else { System.out.println("Invalid student number. Please try again."); } } }
 
+  private static int getStudentIndex(boolean isValidInput, String s, int studentIndex,
+      Scanner scanner) {
+    while (!isValidInput) {
+      System.out.print(s);
+      try {
+        studentIndex = scanner.nextInt();
+        isValidInput = true;
+      } // Get student number
+      catch (InputMismatchException e) // CATCH EXCEPTION
+      {
+        System.out.println("Invalid input. Please enter a valid integer.");
+        scanner.next();
+      }
+    }// Clear the invalid input from the scanner
+    return studentIndex;
+  }
+
+  private static ArrayList<Student> studentsToAvaiArray(SkoolClasses selectedClass) {
+    System.out.println("Select students to add to the class (Enter student number or 0 to finish):");
+    ArrayList<Student> availableStudents = new ArrayList<>();
+    for (Student student : Student.getStudentList()) {
+      if (!selectedClass.getClassStudents().contains(student)) { availableStudents.add(student); } }
+    for (int i = 0; i < availableStudents.size(); i++) {
+      System.out.println((i + 1) + ". " + availableStudents.get(i).getName()); }
+    return availableStudents;
+  }
+
   public static void addCounsellor2(Scanner scanner, SkoolClasses selectedClass) {
     System.out.println("Select a counsellor to add to the class:");
     ArrayList<Counsellor> availableCounsellors = new ArrayList<>();
-    for (Counsellor counsellor : Counsellor.counsellors) {
+    for (Counsellor counsellor : Counsellor.getCounsellors()) {
       if (!selectedClass.getClassCounsellor().contains(counsellor)) {
         availableCounsellors.add(counsellor); } }
     for (int i = 0; i < availableCounsellors.size(); i++) {
       System.out.println((i + 1) + ". " + availableCounsellors.get(i).getName()); }
-    System.out.print("Counsellor number: ");
-    int counsellorIndex = 0; boolean isValidInput = false; while (!isValidInput) {
-      System.out.print("Counsellor number: ");
-      try { counsellorIndex = scanner.nextInt(); isValidInput = true; } // Get counsellor number
-      catch (InputMismatchException e) // CATCH EXCEPTION
-      {System.out.println("Invalid input. Please enter a valid integer.");
-        scanner.next(); } }// Clear the invalid input from the scanner
+    System.out.print(messageCounselNum);
+    int counsellorIndex = 0;
+    boolean isValidInput = false;
+    counsellorIndex = getStudentIndex(isValidInput, messageCounselNum, counsellorIndex,
+        scanner);
     if (counsellorIndex > 0 && counsellorIndex <= availableCounsellors.size()) {
       Counsellor selectedCounsellor = availableCounsellors.get(counsellorIndex - 1);
       selectedClass.addCounsellor(selectedCounsellor);
@@ -96,10 +117,9 @@ public class SkoolClasses {
       ArrayList<Student> classStudents = selectedClass.getClassStudents();
       for (int i = 0; i < classStudents.size(); i++) {
         System.out.println((i + 1) + ". " + classStudents.get(i).getName()); }
-      System.out.print("Student number: "); int studentIndex = 0; boolean isValidInput = false; while (!isValidInput) {
-        System.out.print("Counsellor number: "); try { studentIndex = scanner.nextInt(); isValidInput = true; } // Get counsellor number
-        catch (InputMismatchException e) // CATCH EXCEPTION
-         {System.out.println("Invalid input. Please enter a valid integer."); scanner.next(); } }// Clear the invalid input from the scanner
+      System.out.print("Student number: "); int studentIndex = 0;
+      boolean isValidInput = false;
+      studentIndex = getStudentIndex(isValidInput, messageCounselNum, studentIndex, scanner);
       if (studentIndex == 0) { removingStudents = false;
       } else if (studentIndex > 0 && studentIndex <= classStudents.size()) {
         Student removedStudent = classStudents.remove(studentIndex - 1);
@@ -113,17 +133,17 @@ public class SkoolClasses {
     System.out.println("Select a counsellor to remove from the class:");
     for (int i = 0; i < classCounsellors.size(); i++) {
       System.out.println((i + 1) + ". " + classCounsellors.get(i).getName()); }
-    System.out.print("Counsellor number: "); int counsellorIndex = 0; boolean isValidInput = false; while (!isValidInput) {
-      System.out.print("Counsellor number: "); try { counsellorIndex = scanner.nextInt(); isValidInput = true; } // Get counsellor number
-      catch (InputMismatchException e) // CATCH EXCEPTION
-      {System.out.println("Invalid input. Please enter a valid integer."); scanner.next(); } }// Clear the invalid input from the scanner
+    System.out.print(messageCounselNum); int counsellorIndex = 0;
+    boolean isValidInput = false;
+    counsellorIndex = getStudentIndex(isValidInput, messageCounselNum, counsellorIndex,
+        scanner);
     if (counsellorIndex > 0 && counsellorIndex <= classCounsellors.size()) {
       Counsellor removedCounsellor = classCounsellors.remove(counsellorIndex - 1);
       System.out.println(removedCounsellor.getName() + " removed as the counsellor for the class.");
     } else { System.out.println("Invalid counsellor number. No counsellor removed from the class."); } }
 
   public static void deleteFromClass(Scanner scanner) {
-    System.out.println("Available classes:");
+    System.out.println(messageAvailableClasses);
     for (SkoolClasses skoolClass : allClasses) {
       System.out.println("- " + skoolClass.getName()); }
     // Prompt the user to enter the name of the class
@@ -146,12 +166,14 @@ public class SkoolClasses {
 
   // Method to delete the class
   public static void deleteClass(Scanner scanner) {
-    System.out.println("Available classes:");
+    System.out.println(messageAvailableClasses);
     for (SkoolClasses skoolClass : allClasses) { System.out.println("- " + skoolClass.getName()); }
     System.out.print("Enter the name of the class you want to delete: ");
-    String className = scanner.next(); SkoolClasses targetClass = null;
+    String className = scanner.next();
+    SkoolClasses targetClass = null;
     for (SkoolClasses theClass : allClasses) { if (theClass.getName().equalsIgnoreCase(className)) {
-        targetClass = theClass; break; } } if (targetClass != null) {
+        targetClass = theClass; break; } }
+    if (targetClass != null) {
       allClasses.remove(targetClass); System.out.println("Class '" + className + "' has been deleted.");
     } else { System.out.println("Class '" + className + "' not found."); } }
 
