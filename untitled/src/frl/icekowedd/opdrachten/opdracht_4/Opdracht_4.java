@@ -3,7 +3,7 @@ package frl.icekowedd.opdrachten.opdracht_4;// Imports.
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-// Main class
+// opdr4
 public class Opdracht_4 {
 
 

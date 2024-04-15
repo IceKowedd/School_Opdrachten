@@ -7,7 +7,7 @@ import java.util.Scanner;
 import frl.icekowedd.opdrachten.opdracht_4.validator.mail;
 import java.util.logging.Logger;
 
-// Counsellor class - What defines A counsellor?
+// Counsellor class
 public class Counsellor {
 
   private String name;

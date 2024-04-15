@@ -7,7 +7,7 @@ import java.util.Scanner;
 import frl.icekowedd.opdrachten.opdracht_4.validator.mail;
 import java.util.logging.Logger;
 
-// Student class - What defines A student?
+// Student class
 public class Student {
 
   private String name;

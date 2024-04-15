@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.HashMap;
 
-// class call
+// opdr3
 public class Opdracht_3 {
 
   // calling main method

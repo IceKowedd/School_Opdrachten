@@ -2,7 +2,7 @@ package frl.icekowedd.opdrachten.opdracht_2;// importing packages
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-// calling class
+// opdr2
 public class Opdracht_2 {
   // creating variables to be used trough this class.
   private static final double SOUND_TRAVEL_M = 343;
