@@ -12,22 +12,22 @@ public class Poles {
      method getCircleCirc - found in class Circle.
      method getCirc - found in class Rectangle.*/
   public static double pole(int poles, double radius) {
-    double result = Circle.getCircleCirc(radius);
+    double result = Circle.getCircumference(radius);
     return result / poles;
   }
 
   public static double pole(double perM2, double radius) {
-    double result = Circle.getCircleCirc(radius);
+    double result = Circle.getCircumference(radius);
     return result / perM2;
   }
 
   public static double pole(int poles, Rectangle rectangle) {
-    double result = Rectangle.getCirc(rectangle);
+    double result = Rectangle.getCircumference(rectangle);
     return result / poles;
   }
 
   public static double pole(double perM2, Rectangle rectangle) {
-    double result = Rectangle.getCirc(rectangle);
+    double result = Rectangle.getCircumference(rectangle);
     return result / perM2;
   }
 

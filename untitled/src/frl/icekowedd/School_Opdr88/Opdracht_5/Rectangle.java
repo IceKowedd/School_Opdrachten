@@ -1,9 +1,9 @@
 package frl.icekowedd.School_Opdr88.Opdracht_5;
 
   // rectangle class
-public class Rectangle {
+public class Rectangle extends Shape {
   private double length;
-  private static double width;
+  private double width;
 
   /* Constructor.
   method getSetWidth - is called so Rectangle does not have to be static-
@@ -11,27 +11,37 @@ public class Rectangle {
    */
   public Rectangle (double length, double width) {
     this.length = length;
-    getSetWidth(width);
+    this.width = width;
   }
-  // rectangle manipulation methods
-    // calculates m²
-  public double getM2(Rectangle rectangle) {
-    return rectangle.length * width;
+// calculates total M² of a rectangle
+  @Override
+  public double getArea() {
+    return this.length * this.width;
   }
-    // calculates total circumference of a rectangle
-  public static double getCirc(Rectangle rectangle) {
-    return ((rectangle.length * 2) + (width * 2));
+
+// calculates total circumference of a rectangle
+  @Override
+  public double getCircumference() {
+    return ((this.length * 2) + (this.width * 2));
   }
-    // set length of rectangle
+
+    // getters / setters
+  @Override
   public void setLength(double length) {
     this.length = length;
   }
-    // call static set width method.
-  public void getSetWidth(double width) {
-    setWidth2(width);
+
+  @Override
+  public void setWidth(double width) {
+    this.width = width;
   }
-    // set width of rectangle
-  public static void setWidth2(double width) {
-    Rectangle.width = width;
+
+  public double getLength() {
+    return this.length;
+  }
+
+  @Override
+  public double getWidth() {
+    return this.width;
   }
 }

@@ -58,8 +58,12 @@ public class AppController {
 
 
     slider.valueProperty().addListener((observable, oldValue, newValue) -> {
-      functionList.setScaleX(newValue.doubleValue());
-      functionList.setScaleY(newValue.doubleValue());
+      double newScale = newValue.doubleValue();
+      if (functionList.getPrefHeight() * newScale > functionList.getPrefHeight()) {
+        newScale = functionList.getPrefHeight() / functionList.getPrefHeight();
+      }
+      functionList.setScaleX(newScale);
+      functionList.setScaleY(newScale);
     });
   }
 

@@ -46,22 +46,22 @@ public class ManagerCirc {
       }
     } while (!validInput);
 
-    // call of method that will set new values to the *circle*
-    circle.setNewValue(radius);
+
+    circle.setLength(radius);
     System.out.printf("Circle with radius of %f created", radius);
   }
 
   // call of method that will get circumference of a *circle*
   public static void circCircumference(Circle circle) {
-    double radius = circle.getRadius();
-    double value = Circle.getCircleCirc(radius);
+    double radius = circle.getLength();
+    double value = Circle.getCircumference(radius);
     System.out.println("The circumference is: " + value);
   }
 
   // call of method that will get M² of a *circle*
   public static void circM2(Circle circle) {
-    double radius = circle.getRadius();
-    double value = circle.getCircleM2(radius);
+    double radius = circle.getLength();
+    double value = circle.getArea(radius);
     System.out.println("The M2 is: " + value);
   }
 
@@ -80,7 +80,7 @@ public class ManagerCirc {
     } while (!validInput);
 
     // call of circles radius + call of pole method to get *meters* between poles.
-    double radius = circle.getRadius();
+    double radius = circle.getLength();
     double value = Poles.pole(poles, radius);
     System.out.println("Poles per meter: " + value);
   }
@@ -101,7 +101,7 @@ public class ManagerCirc {
     } while (!validInput);
 
     // call of circles radius to use at > call of pole method to get the amount of *poles* needed.
-    double radius = circle.getRadius();
+    double radius = circle.getLength();
     double value = Poles.pole(meters, radius);
     System.out.println("Total poles to use: " + value);
   }

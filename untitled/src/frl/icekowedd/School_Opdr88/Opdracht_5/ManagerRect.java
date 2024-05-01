@@ -57,20 +57,20 @@ public class ManagerRect {
 
     // call of method that will set new values to the *rectangle*
     rectangle.setLength(len);
-    rectangle.getSetWidth(wid);
+    rectangle.setWidth(wid);
     System.out.printf("Rectangle with Length: %f Width: %f created", len, wid);
   }
 
   // calls getCirc method found in Rectangle to get circumference of *rectangle*
   public static void rectCircumference(Rectangle rectangle) {
-    double value = Rectangle.getCirc(rectangle);
+    double value = Rectangle.getCircumference(rectangle);
     System.out.println("you have selected Rectangle: \n");
     System.out.println("The circumference is: " + value);
   }
 
   // calls getM2 method found in Rectangle to get M² of *rectangle*
   public static void rectM2(Rectangle rectangle) {
-    double value = rectangle.getM2(rectangle);
+    double value = rectangle.getArea(rectangle);
     System.out.println("you have selected Rectangle: \n");
     System.out.println("The M2 is: " + value);
   }
