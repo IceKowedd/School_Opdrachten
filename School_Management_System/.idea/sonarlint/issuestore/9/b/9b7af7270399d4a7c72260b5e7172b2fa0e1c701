@@ -1,0 +1,13 @@
+
+¤
+java:S1450,"\Remove the "classroomView" field and declare it as a local variable in the relevant methods.(¡É–Ëùÿÿÿÿ8Ø£³ó1J$b2c55ee3-c0c0-4593-897d-c63c56b43edc
+œ
+java:S14500"TRemove the "group" field and declare it as a local variable in the relevant methods.(²Ïªøÿÿÿÿ8Ú£³ó1J$b34032d5-7017-41a6-bdf9-b4f3fbe0f28d
+¡
+java:S1450+"YRemove the "mentorView" field and declare it as a local variable in the relevant methods.(¿¨ôàüÿÿÿÿ8ò£³ó1J$35bbc5aa-511c-42c6-8f21-ee06a4737571
+¢
+java:S1450*"ZRemove the "studentView" field and declare it as a local variable in the relevant methods.(²¹°»ÿÿÿÿÿ8ò£³ó1J$7babadf0-9a22-4d24-ac3b-e82f69cb480f
+
+java:S1450-"ZRemove the "teacherView" field and declare it as a local variable in the relevant methods.(º¯Öƒ8ò£³ó1J$c8df15dc-cb1d-414d-aecc-6ee6c5f524f1
+q
+java:S10680")Remove this unused "group" private field.(²Ïªøÿÿÿÿ8–£³ó1J$cefe8665-2acb-49f9-b188-97dbe47b15e2

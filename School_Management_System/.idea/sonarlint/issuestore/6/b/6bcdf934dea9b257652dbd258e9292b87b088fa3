@@ -1,10 +1,13 @@
 
-X	java:S1258"<This block of commented-out lines of code should be removed.(¥Œ»Ï8†µÎÊğ1
-l
-java:S1764?"JCorrect one of the identical sub-expressions on both sides of operator "/"(‘×µâÿÿÿÿÿ8ŠµÎÊğ1
-Z
-java:S1128"8Remove this unused import 'javafx.application.Platform'.(§“óùÿÿÿÿ8µÎÊğ1
-\
-java:S1128":Remove this unused import 'javafx.beans.binding.Bindings'.(ÕÔ‡úÿÿÿÿ8µÎÊğ1
-[
-java:S1128"9Remove this unused import 'javafx.scene.control.Control'.(´¶«±ÿÿÿÿÿ8µÎÊğ1
+¤
+java:S1450"\Remove the "classroomView" field and declare it as a local variable in the relevant methods.(¡É–Ëùÿÿÿÿ8°¡­ó1J$f8336ec4-4abb-4d82-afa9-2d37f5fff9f4
+œ
+java:S1450"TRemove the "group" field and declare it as a local variable in the relevant methods.(²Ïªøÿÿÿÿ8°¡­ó1J$4ee2c990-bb6d-4d62-b5bb-749fa815e41c
+¡
+java:S1450"YRemove the "mentorView" field and declare it as a local variable in the relevant methods.(¿¨ôàüÿÿÿÿ8°¡­ó1J$b6374e4c-d7b3-451f-a6f8-a6ef159dc2c4
+¢
+java:S1450"ZRemove the "studentView" field and declare it as a local variable in the relevant methods.(²¹°»ÿÿÿÿÿ8‘°¡­ó1J$1d5989e7-559f-480e-be99-f0955785f345
+
+java:S1450"ZRemove the "teacherView" field and declare it as a local variable in the relevant methods.(º¯Öƒ8‘°¡­ó1J$1c0e4755-420e-4707-9024-5edf6d4da0a0
+q
+java:S1068")Remove this unused "group" private field.(²Ïªøÿÿÿÿ8›°¡­ó1J$f98ced97-598c-41d9-8d78-31e19449055e

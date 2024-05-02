@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:controller="com.example.school_management_system.form.PersonFormController" xmlns:fx="http://javafx.com/fxml/1" spacing="10">
+    <TextField fx:id="nameField" promptText="Name"/>
+    <TextField fx:id="lastnameField" promptText="Lastname"/>
+    <TextField fx:id="birthdateField" promptText="Birthdate"/>
+    <TextField fx:id="phoneField" promptText="Phone"/>
+    <TextField fx:id="emailField" promptText="Email"/>
+    <TextField fx:id="addressField" promptText="Address"/>
+    <TextField fx:id="cityField" promptText="City"/>
+    <TextField fx:id="idField" promptText="ID leave empty if not specific"/>
+    <Button text="Submit" onAction="#handleSubmitButtonAction"/>
+</VBox>
